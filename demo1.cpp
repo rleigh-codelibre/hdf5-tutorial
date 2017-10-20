@@ -41,6 +41,38 @@ int main()
           status = H5Dwrite(dataset, H5T_NATIVE_INT, H5S_ALL,
                             H5S_ALL, H5P_DEFAULT, data);
 
+          {
+            // Create string datatype
+            auto stype = H5Tcopy(H5T_C_S1);
+            H5Tset_size(stype, H5T_VARIABLE);
+
+            // Create string dataspace
+            auto sdataspace = H5Screate(H5S_SCALAR);
+
+            {
+              // Create "creator" attribute
+              auto cattr = H5Acreate(dataset, "creator", stype, sdataspace, H5P_DEFAULT, H5P_DEFAULT);
+
+              // Write attribute
+              auto cstr = "demo1";
+              H5Awrite(cattr, stype, &cstr);
+
+              H5Aclose(cattr);
+            }
+            {
+              // Create "date" attribute
+              auto dattr = H5Acreate(dataset, "date", stype, sdataspace, H5P_DEFAULT, H5P_DEFAULT);
+
+              // Write attribute
+              auto dstr = "20/10/2019";
+              H5Awrite(dattr, stype, &dstr);
+
+              H5Aclose(dattr);
+            }
+
+            H5Sclose(sdataspace);
+          }
+
           H5Dclose(dataset);
         }
 
