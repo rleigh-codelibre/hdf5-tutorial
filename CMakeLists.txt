@@ -13,6 +13,6 @@ find_package(HDF5 REQUIRED)
 
 add_executable(demo1 demo1.cpp)
 
-target_compile_definitions(demo PRIVATE ${HDF5_DEFINITIONS})
-target_include_directories(demo PRIVATE ${HDF5_INCLUDE_DIRS})
-target_link_libraries(demo ${HDF5_LIBRARIES})
+target_compile_definitions(demo1 PRIVATE ${HDF5_DEFINITIONS})
+target_include_directories(demo1 PRIVATE ${HDF5_INCLUDE_DIRS})
+target_link_libraries(demo1 ${HDF5_LIBRARIES})
