@@ -38,22 +38,22 @@ int main()
       std::for_each(dims.cbegin(), dims.cend(), [](const auto& d){comment << d << ",";});
       comment << "})\n";
 
-      std::vector<hsize_t> full_offsets = {{1, 1}};
-      std::vector<hsize_t> full_extents = dims;
-      for (auto& e : full_extents)
+      std::vector<hsize_t> subset_offsets = {{1, 1}};
+      std::vector<hsize_t> subset_extents = dims;
+      for (auto& e : subset_extents)
         e -=2;
 
-      auto hdstatus = H5Sselect_hyperslab(dataspace, H5S_SELECT_SET, full_offsets.data(), nullptr,
-                                          full_extents.data(), nullptr);
+      auto hdstatus = H5Sselect_hyperslab(dataspace, H5S_SELECT_SET, subset_offsets.data(), nullptr,
+                                          subset_extents.data(), nullptr);
 
       comment << "Create memory dataspace" << '\n';
-      auto memspace = H5Screate_simple(full_extents.size(), full_extents.data(), nullptr);
+      auto memspace = H5Screate_simple(subset_extents.size(), subset_extents.data(), nullptr);
 
       int data[dims[0]-2][dims[1]-2];
 
       comment << "Read data from dataset" << '\n';
       auto rstatus = H5Dread(dataset, H5T_NATIVE_INT, memspace, dataspace,
-                           H5P_DEFAULT, data);
+                             H5P_DEFAULT, data);
       comment << "  Array contents:" << '\n';
       for (int y = 0; y < dims[1]-2; ++y)
         {

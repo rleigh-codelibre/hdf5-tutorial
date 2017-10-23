@@ -41,7 +41,7 @@ int main()
       std::vector<hsize_t> full_offsets = {{0, 0}};
       std::vector<hsize_t> full_extents = dims;
       auto hdstatus = H5Sselect_hyperslab(dataspace, H5S_SELECT_SET, full_offsets.data(), nullptr,
-                                         full_extents.data(), nullptr);
+                                          full_extents.data(), nullptr);
 
       comment << "Create memory dataspace" << '\n';
       auto memspace = H5Screate_simple(dims.size(), dims.data(), nullptr);
@@ -50,7 +50,7 @@ int main()
 
       comment << "Read data from dataset" << '\n';
       auto rstatus = H5Dread(dataset, H5T_NATIVE_INT, memspace, dataspace,
-                           H5P_DEFAULT, data);
+                             H5P_DEFAULT, data);
       comment << "  Array contents:" << '\n';
       for (int y = 0; y < dims[1]; ++y)
         {
