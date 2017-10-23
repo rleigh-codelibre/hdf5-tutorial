@@ -31,6 +31,19 @@ int main()
           for (int y = 0; y < dims[1]; ++y)
             data[x][y] = x + 2*y;
 
+        comment << "Test data:" << '\n';
+        for (int y = 0; y < dims[1]; ++y)
+          {
+            comment << "  ";
+            for (int x = 0; x < dims[0]; ++x)
+              {
+                if (x > 0)
+                  comment << ",\t";
+                comment << data[x][y];
+              }
+            comment << '\n';
+          }
+
         comment << "Create '2DArray' dataset" << '\n';
         // Location, name, datatype, dataspace
         // link/dataset property lists
