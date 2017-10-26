@@ -7,10 +7,16 @@
 
 auto& comment = std::cout;
 
-int main()
+int main(int argc, char *argv[])
 {
-  comment << "Open HDF5 file 'test.h5' for reading" << '\n';
-  auto file = H5Fopen("test.h5", H5F_ACC_RDONLY, H5P_DEFAULT);
+  if (argc != 2)
+    {
+      std::cerr << "Usage: " << argv[0] << " file.h5\n";
+      exit(2);
+    }
+
+  comment << "Open HDF5 file '" << argv[1] << "' for reading" << '\n';
+  auto file = H5Fopen(argv[1], H5F_ACC_RDONLY, H5P_DEFAULT);
 
   {
     comment << "Open dataset 'Simple/2DArray'" << '\n';

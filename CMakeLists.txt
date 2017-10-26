@@ -28,3 +28,9 @@ add_executable(demo3 demo3.cpp)
 target_compile_definitions(demo3 PRIVATE ${HDF5_DEFINITIONS})
 target_include_directories(demo3 PRIVATE ${HDF5_INCLUDE_DIRS})
 target_link_libraries(demo3 ${HDF5_LIBRARIES})
+
+add_executable(demo4 demo4.cpp)
+
+target_compile_definitions(demo4 PRIVATE ${HDF5_DEFINITIONS})
+target_include_directories(demo4 PRIVATE ${HDF5_INCLUDE_DIRS})
+target_link_libraries(demo4 ${HDF5_LIBRARIES})
