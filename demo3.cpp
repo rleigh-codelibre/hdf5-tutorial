@@ -49,6 +49,7 @@ int main(int argc, char *argv[])
       for (auto& e : subset_extents)
         e -=2;
 
+      comment << "Select hyperslab within dataset dataspace" << '\n';
       auto hdstatus = H5Sselect_hyperslab(dataspace, H5S_SELECT_SET, subset_offsets.data(), nullptr,
                                           subset_extents.data(), nullptr);
 

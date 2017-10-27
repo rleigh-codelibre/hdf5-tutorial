@@ -4,7 +4,7 @@ import sys
 
 import h5py
 
-print("Open HDF5 file 'test.h5' for writing")
+print("Open HDF5 file 'pytest.h5' for writing")
 f = h5py.File("pytest.h5", "w")
 
 print("Create group 'Simple'")
