@@ -11,26 +11,22 @@ project(hdf-demo
 
 find_package(HDF5 REQUIRED)
 
-add_executable(demo1 demo1.cpp)
+add_executable(write-array write-array.cpp)
+target_compile_definitions(write-array PRIVATE ${HDF5_DEFINITIONS})
+target_include_directories(write-array PRIVATE ${HDF5_INCLUDE_DIRS})
+target_link_libraries(write-array ${HDF5_LIBRARIES})
 
-target_compile_definitions(demo1 PRIVATE ${HDF5_DEFINITIONS})
-target_include_directories(demo1 PRIVATE ${HDF5_INCLUDE_DIRS})
-target_link_libraries(demo1 ${HDF5_LIBRARIES})
+add_executable(write-chunked-array write-chunked-array.cpp)
+target_compile_definitions(write-chunked-array PRIVATE ${HDF5_DEFINITIONS})
+target_include_directories(write-chunked-array PRIVATE ${HDF5_INCLUDE_DIRS})
+target_link_libraries(write-chunked-array ${HDF5_LIBRARIES})
 
-add_executable(demo2 demo2.cpp)
+add_executable(read-array read-array.cpp)
+target_compile_definitions(read-array PRIVATE ${HDF5_DEFINITIONS})
+target_include_directories(read-array PRIVATE ${HDF5_INCLUDE_DIRS})
+target_link_libraries(read-array ${HDF5_LIBRARIES})
 
-target_compile_definitions(demo2 PRIVATE ${HDF5_DEFINITIONS})
-target_include_directories(demo2 PRIVATE ${HDF5_INCLUDE_DIRS})
-target_link_libraries(demo2 ${HDF5_LIBRARIES})
-
-add_executable(demo3 demo3.cpp)
-
-target_compile_definitions(demo3 PRIVATE ${HDF5_DEFINITIONS})
-target_include_directories(demo3 PRIVATE ${HDF5_INCLUDE_DIRS})
-target_link_libraries(demo3 ${HDF5_LIBRARIES})
-
-add_executable(demo4 demo4.cpp)
-
-target_compile_definitions(demo4 PRIVATE ${HDF5_DEFINITIONS})
-target_include_directories(demo4 PRIVATE ${HDF5_INCLUDE_DIRS})
-target_link_libraries(demo4 ${HDF5_LIBRARIES})
+add_executable(read-array-subset read-array-subset.cpp)
+target_compile_definitions(read-array-subset PRIVATE ${HDF5_DEFINITIONS})
+target_include_directories(read-array-subset PRIVATE ${HDF5_INCLUDE_DIRS})
+target_link_libraries(read-array-subset ${HDF5_LIBRARIES})
