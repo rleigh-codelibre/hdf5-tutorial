@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.9.0)
 cmake_policy(VERSION 3.9.0)
 
 if(NOT CMAKE_CXX_STANDARD)
-  set(CMAKE_CXX_STANDARD 17)
+  set(CMAKE_CXX_STANDARD 14)
 endif()
 
 project(hdf-demo
